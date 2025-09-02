@@ -1,0 +1,185 @@
+:root {
+    --cafe-bg-color: #f8f5ed;
+    --card-bg-color: rgba(255, 255, 255, 0.1);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --primary-text-color: #3d342d;
+    --secondary-text-color: #6a6058;
+    --accent-color: #a4775d;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cafe-bg-color);
+    color: var(--primary-text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+.scrollable {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: auto;
+    /* Reset fixed height to allow content to dictate height */
+}
+
+.glass-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://img.freepik.com/premium-photo/abstract-blur-defocused-interior-coffee-shop-cafe-background_1048944-14427026.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    z-index: -1;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--primary-text-color);
+    text-shadow: 2px 2px 4px rgba(32, 28, 28, 0.1);
+}
+
+.cards-container {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    height: 400px;
+}
+
+.cards {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.swipe-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    cursor: grab;
+}
+
+.location-card {
+    background: var(--card-bg-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+}
+
+.location-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+    opacity: 0.5;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.location-card:hover::before {
+    opacity: 0.8;
+}
+
+.location-card img {
+    width: calc(100% - 40px);
+    height: 60%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 0 auto 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.location-card h3 {
+    margin: 0 0 5px;
+    font-size: 1.5rem;
+    color: var(--primary-text-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.location-card p {
+    margin: 5px 0;
+    color: var(--secondary-text-color);
+}
+
+.location-card small {
+    color: var(--secondary-text-color);
+    margin-top: auto;
+    padding-bottom: 10px;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+#show-saved-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+#show-saved-btn:hover {
+    background-color: #8c6652;
+    transform: translateY(-2px);
+}
+
+#show-saved-btn i {
+    margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .cards-container {
+        height: 400px;
+    }
+}
+
